@@ -18,8 +18,8 @@ class CartResource extends JsonResource
                     'type' => $this->coupon->type,
                 ];
             }),
-            'items' => $this->items,
-            'total' => round($this->total, 2),
+            'items' => $this->items->each(function ($i) { $i->price = number_format($i->price, 2); }),
+            'total' => number_format($this->total, 2),
         ];
     }
 }

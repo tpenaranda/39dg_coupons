@@ -41,3 +41,7 @@ strategies without requiring major rewrites in the future.
 ## Tests (PHP SQLite driver required)
 
 `vendor/phpunit/phpunit/phpunit`
+
+## Reset Cart items
+
+`php artisan cache:clear`
