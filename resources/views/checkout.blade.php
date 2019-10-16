@@ -46,14 +46,18 @@
                 margin-bottom: 30px;
             }
         </style>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            <div class="content">
-                <div class="title m-b-md">
-                    {{ config('app.name') }}
+        <div id="checkout">
+            <div class="flex-center position-ref full-height">
+                <div class="content">
+                    <div class="title m-b-md">
+                        {{ config('app.name') }}
+                    </div>
                 </div>
             </div>
         </div>
+        <script src="{{ asset('js/app.js') }}" defer></script>
     </body>
 </html>
