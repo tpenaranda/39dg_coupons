@@ -14,7 +14,7 @@ class CartResource extends JsonResource
                 return [
                     'amount' => $this->coupon->amount,
                     'name' => $this->coupon->name,
-                    'original_total' => $this->items->pluck('price')->sum(),
+                    'original_total' => number_format($this->items->pluck('price')->sum(), 2),
                     'type' => $this->coupon->type,
                 ];
             }),
