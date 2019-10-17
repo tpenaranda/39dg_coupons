@@ -3,8 +3,6 @@
 namespace Tests\Feature;
 
 use App\{Cart, Item, Coupon};
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class CartTest extends TestCase
@@ -33,6 +31,7 @@ class CartTest extends TestCase
 
         $this->assertEquals(40, $cart->total);
     }
+
     public function testGetDiscountForPercentCoupon()
     {
         $cart = factory(Cart::class)->make([
@@ -89,5 +88,4 @@ class CartTest extends TestCase
         $this->assertFalse($cart->validateMinTotal(300));
         $this->assertFalse($cart->validateMinTotal(301));
     }
-
 }
