@@ -62,7 +62,7 @@ function Checkout() {
           </>}
           <p className="text-right pr-2 text-information bg-warning font-weight-bold">Total ${cartData.total}</p>
           <InputGroup className="mb-3">
-            <FormControl placeholder="Discount Code" onChange={(e) => setCouponName(e.target.value)} value={couponName} />
+            <FormControl placeholder="Discount Code" onChange={(e) => setCouponName(e.target.value.toUpperCase())} value={couponName} />
             <InputGroup.Append>
               <Button onClick={redeemCoupon} variant="outline-secondary" disabled={!couponName}>Apply</Button>
             </InputGroup.Append>
