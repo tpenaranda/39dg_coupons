@@ -42,7 +42,3 @@ You are required to implement a new feature for an e-commerce website: a flexibl
 ## Tests (PHP SQLite driver required)
 
 `vendor/phpunit/phpunit/phpunit`
-
-## Reset Cart items
-
-`php artisan cache:clear`
