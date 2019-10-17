@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 $factory->define(Cart::class, function (Faker $faker) {
     return [
         'items' => function () use ($faker) {
-            return factory(Item::class, $faker->numberBetween(3, 12))->make();
+            return factory(Item::class, $faker->numberBetween(1, 16))->make();
         }
     ];
 });

@@ -9,9 +9,8 @@ $factory->define(Coupon::class, function (Faker $faker) {
         'amount' => $faker->randomNumber(2),
         'name' => $faker->bothify('??????##'),
         'rules' => [
-            'rule_1' => $faker->randomNumber(2),
-            'rule_2' => $faker->randomNumber(2),
-            'rule_3' => $faker->randomNumber(2),
+            'min_total' => $faker->randomNumber(2),
+            'min_items' => $faker->randomNumber(2),
         ],
         'type' => $faker->randomElement([Coupon::TYPE_FIXED, Coupon::TYPE_PERCENT, Coupon::TYPE_MIXED, Coupon::TYPE_REJECTED]),
     ];

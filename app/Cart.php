@@ -16,8 +16,12 @@ class Cart
         $this->calculateTotal();
     }
 
-    public static function get(): self
+    public function getSample(bool $new = false): self
     {
+        if ($new) {
+            Cache::put('sample-cart', factory(self::class)->make());
+        }
+
         return Cache::rememberForever('sample-cart', function () {
             return factory(self::class)->make();
         });
