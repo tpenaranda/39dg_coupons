@@ -3,6 +3,8 @@
 ## You are required to implement a new feature for an e-commerce website: a flexible coupon system that allows for different discount
 strategies without requiring major rewrites in the future.
 
+<p align="center"><img src="https://github.com/tpenaranda/39dg_coupons/raw/master/screenshot.jpg" width="800"></p>
+
 ## Requirements
 
 * PHP >= 7.2
