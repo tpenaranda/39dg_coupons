@@ -84,6 +84,6 @@ class Cart
 
     public function validateMinTotal(int $value): bool
     {
-        return $this->total >= $value;
+        return $this->total > $value;
     }
 }

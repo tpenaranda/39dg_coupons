@@ -63,7 +63,7 @@ class CheckoutControllerTest extends TestCase
 
         $this->setTestCart(factory(Cart::class)->make([
             'items' => [
-                factory(Item::class)->make(['price' => 50]),
+                factory(Item::class)->make(['price' => 50.10]),
             ]
         ]));
 
@@ -71,8 +71,8 @@ class CheckoutControllerTest extends TestCase
 
         $response->assertStatus(200);
 
-        $this->assertEquals(50, $response->json('data.coupon.original_total'));
-        $this->assertEquals(40, $response->json('data.total'));
+        $this->assertEquals(50.10, $response->json('data.coupon.original_total'));
+        $this->assertEquals(40.10, $response->json('data.total'));
     }
 
     public function testCouponPERCENT10()
@@ -96,7 +96,7 @@ class CheckoutControllerTest extends TestCase
         $response->assertStatus(422);
 
         $this->setTestCart(factory(Cart::class)->make([
-            'items' => factory(Item::class, 2)->make(['price' => 50])
+            'items' => factory(Item::class, 2)->make(['price' => 50.10])
         ]));
 
 
@@ -104,8 +104,8 @@ class CheckoutControllerTest extends TestCase
 
         $response->assertStatus(200);
 
-        $this->assertEquals(100, $response->json('data.coupon.original_total'));
-        $this->assertEquals(90, $response->json('data.total'));
+        $this->assertEquals(100.20, $response->json('data.coupon.original_total'));
+        $this->assertEquals(90.18, $response->json('data.total'));
     }
 
     public function testCouponMIXED10()
@@ -139,7 +139,7 @@ class CheckoutControllerTest extends TestCase
     public function testCouponREJECTED100()
     {
         $this->setTestCart(factory(Cart::class)->make([
-            'items' => factory(Item::class, 10)->make(['price' => 99])
+            'items' => factory(Item::class, 10)->make(['price' => 100])
         ]));
 
         $response = $this->putJson('/api/cart/coupon/REJECTED100');
@@ -147,14 +147,14 @@ class CheckoutControllerTest extends TestCase
         $response->assertStatus(422);
 
         $this->setTestCart(factory(Cart::class)->make([
-            'items' => factory(Item::class, 2)->make(['price' => 500])
+            'items' => factory(Item::class, 2)->make(['price' => 600])
         ]));
 
         $response = $this->putJson('/api/cart/coupon/REJECTED100');
 
         $response->assertStatus(200);
 
-        $this->assertEquals(1000, $response->json('data.coupon.original_total'));
-        $this->assertEquals(890, $response->json('data.total'));
+        $this->assertEquals(1200, $response->json('data.coupon.original_total'));
+        $this->assertEquals(1070, $response->json('data.total'));
     }
 }
