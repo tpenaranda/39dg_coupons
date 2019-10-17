@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
+    app('App\Cart')->getSample($refresh = true);
+
     return view('checkout');
 });
