@@ -47,13 +47,6 @@ class Cart
         return $this;
     }
 
-    public function removeCoupon(): self
-    {
-        $this->coupon = null;
-
-        return $this->calculateTotal();
-    }
-
     public function addCoupon(Coupon $coupon): self
     {
         $this->coupon = $coupon;
