@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { Modal, Button, InputGroup, FormControl, Container, Col, Table, Row } from 'react-bootstrap';
+import { Button, Col, Container, FormControl, InputGroup, Modal, Row, Table } from 'react-bootstrap';
 
 function CartItemRow(props) {
   return <tr>
@@ -66,7 +66,7 @@ function Checkout() {
           </>}
           <p className="text-right pr-2 text-information bg-warning font-weight-bold">Total ${cartData.total}</p>
           <InputGroup className="mb-3">
-            <FormControl placeholder="Discount Code" onChange={(e) => setCouponName(e.target.value.trim().toUpperCase())} value={couponName} />
+            <FormControl placeholder="Discount Code" onKeyUp={(e) => e.which === 13 && redeemCoupon()} onChange={(e) => setCouponName(e.target.value.trim().toUpperCase())} value={couponName} />
             <InputGroup.Append>
               <Button onClick={redeemCoupon} variant="outline-secondary" disabled={!couponName}>Apply</Button>
             </InputGroup.Append>
@@ -80,7 +80,7 @@ function Checkout() {
         </Modal.Header>
         <Modal.Body>{ modalBody }</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setModalShow(false)}>Ok</Button>
+          <Button variant="secondary" onClick={() => setModalShow(false)}>Close</Button>
         </Modal.Footer>
       </Modal>
     </Container>
