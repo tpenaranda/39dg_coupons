@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom';
 import { Modal, Button, InputGroup, FormControl, Container, Col, Table, Row } from 'react-bootstrap';
 
 function CartItemRow(props) {
-  return <tr><td>{ props.item.id }</td><td>{ props.item.description }</td><td>{ props.item.price }</td></tr>
+  return <tr>
+    <td className="text-center">{ props.item.id }</td>
+    <td>{ props.item.description }</td>
+    <td className="text-right">{ props.item.price }</td>
+  </tr>
 }
 
 function Checkout() {
@@ -47,9 +51,9 @@ function Checkout() {
           <Table striped bordered hover className="mt-5">
             <thead>
               <tr>
-                <th>Item #</th>
+                <th className="text-center">Item #</th>
                 <th>Description</th>
-                <th>Price</th>
+                <th className="text-center">Price</th>
               </tr>
             </thead>
             <tbody>
@@ -62,7 +66,7 @@ function Checkout() {
           </>}
           <p className="text-right pr-2 text-information bg-warning font-weight-bold">Total ${cartData.total}</p>
           <InputGroup className="mb-3">
-            <FormControl placeholder="Discount Code" onChange={(e) => setCouponName(e.target.value.toUpperCase())} value={couponName} />
+            <FormControl placeholder="Discount Code" onChange={(e) => setCouponName(e.target.value.trim().toUpperCase())} value={couponName} />
             <InputGroup.Append>
               <Button onClick={redeemCoupon} variant="outline-secondary" disabled={!couponName}>Apply</Button>
             </InputGroup.Append>
